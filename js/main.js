@@ -152,22 +152,6 @@
     if (e.key === 'Escape') { closeLightbox(); closeMenu(); }
   });
 
-  /* ---------- Map: load Google Maps only when the visitor asks for it ---------- */
-  var mapCard = document.getElementById('map-card');
-  if (mapCard) {
-    mapCard.addEventListener('click', function (e) {
-      e.preventDefault();
-      var frame = document.createElement('iframe');
-      frame.className = 'map-frame';
-      frame.title = 'Map showing President Guest Lodge, 99 President Street, Louis Trichardt';
-      frame.src = mapCard.dataset.embed;
-      frame.loading = 'lazy';
-      frame.referrerPolicy = 'no-referrer-when-downgrade';
-      frame.setAttribute('allowfullscreen', '');
-      mapCard.replaceWith(frame);
-    });
-  }
-
   /* ---------- Start ---------- */
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('hashchange', route);
