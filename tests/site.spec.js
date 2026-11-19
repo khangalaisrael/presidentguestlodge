@@ -7,7 +7,7 @@ const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
 
 const PAGES = ['home', 'rooms', 'facilities', 'gallery'];
-const BOOKING_URL = 'https://book.nightsbridge.com/25093';
+const BOOKING_URL = 'https://book.nightsbridge.com/32361';
 const WHATSAPP = '27812374615';
 const PHONE = '+27155184030';
 
@@ -31,6 +31,28 @@ async function scrollThrough(page) {
   for (let y = 0; y < height; y += 500) await page.evaluate((v) => window.scrollTo(0, v), y);
   await page.waitForLoadState('networkidle');
 }
+
+test.describe('location map', () => {
+  test('shows a light placeholder first and loads the Google map only when tapped', async ({ page }) => {
+    const requests = [];
+    page.on('request', (r) => { if (r.url().includes('google.com/maps')) requests.push(r.url()); });
+    await page.goto('/#location');
+    await scrollThrough(page);
+    await expect(page.locator('#map-card')).toBeVisible();
+    expect(requests).toEqual([]); // nothing from Google until the visitor asks
+    await page.locator('#map-card').click();
+    const frame = page.locator('iframe.map-frame');
+    await expect(frame).toBeVisible();
+    await expect(frame).toHaveAttribute('title', /President Guest Lodge/);
+    await expect(frame).toHaveAttribute('src', /google\.com\/maps/);
+  });
+
+  test('the map placeholder still links to Google Maps without JavaScript', async ({ page }) => {
+    await page.goto('/');
+    const href = await page.locator('#map-card').getAttribute('href');
+    expect(href).toContain('google.com/maps');
+  });
+});
 
 test.describe('every page', () => {
   for (const name of PAGES) {
@@ -224,7 +246,7 @@ test.describe('without JavaScript', () => {
     await expect(page.locator('.whatsapp-fab')).toBeVisible();
     const lazyWithoutSrc = await page.evaluate(() => [...document.querySelectorAll('img')].filter((i) => !i.getAttribute('src')).length);
     expect(lazyWithoutSrc).toBeLessThanOrEqual(1); // only the empty lightbox image
-    await expect(page.locator('a[href="https://book.nightsbridge.com/25093"]').first()).toBeVisible();
+    await expect(page.locator('a[href="https://book.nightsbridge.com/32361"]').first()).toBeVisible();
   });
 });
 
