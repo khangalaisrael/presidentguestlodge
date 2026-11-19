@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="home">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,643 +18,9 @@
 <meta name="description" content="President Guest Lodge in Louis Trichardt, Limpopo. Comfortable accommodation at the foot of the Soutpansberg mountains.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-:root {
-  --red: #C8102E;
-  --red-dark: #A00D24;
-  --red-light: #FFF5F5;
-  --charcoal: #1A1A2E;
-  --charcoal-mid: #3D3D54;
-  --charcoal-light: #64647A;
-  --grey-bg: #F5F5F7;
-  --white: #FFFFFF;
-  --teal: #1A7A6D;
-  --border: #E2E2E8;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,.12);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,.16);
-  --r-sm: 4px;
-  --r-md: 8px;
-  --r-lg: 16px;
-  --font-d: 'Playfair Display', Georgia, serif;
-  --font-b: 'Inter', -apple-system, sans-serif;
-  --max-w: 1200px;
-}
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-b); color: var(--charcoal-mid); background: var(--grey-bg); line-height:1.6; -webkit-font-smoothing: antialiased; }
-img { display:block; max-width:100%; height:auto; }
-a { color:inherit; text-decoration:none; }
-button { cursor:pointer; border:none; font-family:inherit; }
-
-/* NAV */
-.nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  background: linear-gradient(to bottom, rgba(10,10,20,0.55), rgba(10,10,20,0));
-  transition: background 0.3s, box-shadow 0.3s;
-}
-.nav.scrolled { background: var(--charcoal); box-shadow: inset 0 -3px 0 var(--red); }
-.nav-inner {
-  max-width: var(--max-w); margin:0 auto; padding:0 20px;
-  height:68px; display:flex; align-items:center; justify-content:space-between;
-}
-.nav-brand { display:flex; align-items:center; gap:10px; }
-.nav-logo { height:40px; width:40px; border-radius:50%; box-shadow:0 0 0 2px rgba(255,255,255,0.85); }
-.wordmark { display:flex; flex-direction:column; line-height:1; }
-.wordmark-main {
-  font-family: var(--font-d); font-size:19px; font-weight:700; letter-spacing:1px; color:var(--white);
-}
-.wordmark-main span { color:#E8344F; }
-.wordmark-sub { font-size:9px; font-weight:600; letter-spacing:3px; color:rgba(255,255,255,0.75); margin-top:4px; }
-.nav-links { display:flex; gap:26px; align-items:center; list-style:none; }
-.nav-links a {
-  font-size:13px; font-weight:500; color:rgba(255,255,255,0.8);
-  letter-spacing:0.5px; text-transform:uppercase; transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--white); }
-.btn-book {
-  display:inline-flex; align-items:center; justify-content:center; gap:6px;
-  background: var(--red); color:var(--white);
-  padding:12px 24px; border-radius: var(--r-sm);
-  font-size:14px; font-weight:600; letter-spacing:0.3px;
-  transition: background 0.2s, transform 0.2s;
-}
-.btn-book:hover { background: var(--red-dark); transform: translateY(-1px); }
-.nav-book-desktop { padding:9px 18px; font-size:12px; }
-.hamburger { display:none; flex-direction:column; gap:5px; background:none; padding:8px; }
-.hamburger span { display:block; width:24px; height:2px; background:var(--white); border-radius:2px; }
-@media(max-width:900px) {
-  .nav-links,.nav-book-desktop { display:none; }
-  .hamburger { display:flex; }
-}
-
-/* MOBILE MENU */
-.mobile-menu {
-  display:none; position:fixed; top:68px; border-top:3px solid var(--red); left:0; right:0; z-index:99;
-  background:var(--charcoal); padding:16px 20px;
-  flex-direction:column; gap:4px;
-}
-.mobile-menu.open { display:flex; }
-.mobile-menu a {
-  color:rgba(255,255,255,0.8); font-size:14px; font-weight:500;
-  padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-/* HERO — full viewport, editorial, bottom-aligned */
-.hero {
-  position:relative; height:100vh; height:100svh; min-height:620px;
-  overflow:hidden; display:flex; align-items:flex-end;
-}
-.hero-bg {
-  position:absolute; inset:0;
-  background: url('img/pres1-m.webp') center 35%/cover no-repeat;
-  animation: heroZoom 14s ease-out both;
-}
-@media(min-width:900px) { .hero-bg { background-image:url('img/lappa-swimming-pool.webp'); background-position:60% 70%; } }
-@keyframes heroZoom { from{transform:scale(1.08)} to{transform:scale(1)} }
-.hero-overlay {
-  position:absolute; inset:0;
-  background: linear-gradient(to bottom, rgba(10,10,20,0) 35%, rgba(10,10,20,0.55) 65%, rgba(10,10,20,0.88) 100%);
-}
-.hero-content {
-  position:relative; z-index:2; width:100%; max-width:var(--max-w); margin:0 auto;
-  padding:0 24px 64px;
-}
-.hero-eyebrow {
-  display:inline-flex; align-items:center; gap:8px;
-  background:var(--red); color:var(--white);
-  font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
-  padding:6px 12px; border-radius:2px; margin-bottom:18px;
-}
-.hero h1 {
-  font-family: var(--font-d); font-size:56px; font-weight:700;
-  color:var(--white); line-height:1.08; margin-bottom:18px; max-width:640px;
-}
-.hero h1 em { font-style:italic; font-weight:400; }
-.tagline {
-  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
-  font-size:14px; font-weight:600; color:var(--white); margin-bottom:30px;
-}
-.tagline i { width:3px; height:16px; background:var(--red); display:inline-block; }
-.hero-ctas { display:flex; gap:12px; flex-wrap:wrap; }
-.btn-ghost {
-  display:inline-flex; align-items:center; justify-content:center; gap:6px;
-  border:1.5px solid rgba(255,255,255,0.7); color:var(--white);
-  padding:12px 24px; border-radius:var(--r-sm);
-  font-size:14px; font-weight:500; transition: background 0.2s;
-}
-.btn-ghost:hover { background:rgba(255,255,255,0.12); }
-.hero-scroll { display:none; }
-@media(max-width:640px) {
-  .hero h1 { font-size:38px; }
-  .hero-content { padding-bottom:44px; }
-  .hero-ctas a { flex:1; }
-}
-
-/* === FULL-BLEED SECTION CARDS (Wildnut style) === */
-.section-card {
-  position:relative; height:70vh; min-height:400px; border-bottom:4px solid var(--white);
-  overflow:hidden; display:flex; align-items:center; justify-content:center;
-  cursor:pointer;
-}
-.section-card-bg {
-  position:absolute; inset:0; background-size:cover; background-position:center;
-  transition: transform 0.6s ease;
-}
-.section-card:hover .section-card-bg { transform: scale(1.04); }
-.section-card-overlay {
-  position:absolute; inset:0;
-  background: linear-gradient(to bottom, rgba(26,26,46,0.15) 0%, rgba(26,26,46,0.55) 100%);
-  transition: background 0.3s;
-}
-.section-card:hover .section-card-overlay {
-  background: linear-gradient(to bottom, rgba(26,26,46,0.1) 0%, rgba(26,26,46,0.45) 100%);
-}
-.section-card-content {
-  position:relative; z-index:2; text-align:center; padding:0 24px;
-}
-.section-card-title {
-  font-family: var(--font-d); font-size:40px; font-weight:700;
-  color:var(--white); margin-bottom:8px;
-}
-.section-card-sub {
-  font-size:15px; color:rgba(255,255,255,0.8); font-weight:300;
-  letter-spacing:1px;
-}
-.section-card-cta {
-  display:inline-flex; align-items:center; gap:8px;
-  margin-top:20px; padding:11px 28px; background:var(--red);
-  border:1.5px solid var(--red);
-  border-radius:var(--r-sm); color:var(--white);
-  font-size:13px; font-weight:500; letter-spacing:0.5px;
-  transition: 0.2s;
-}
-.section-card:hover .section-card-cta { background:var(--red-dark); }
-@media(max-width:640px) {
-  .section-card { height:55vh; min-height:320px; }
-  .section-card-title { font-size:28px; }
-}
-
-/* === EXPANDABLE DETAIL PANELS === */
-.detail-panel {
-  max-height:0; overflow:hidden;
-  transition: max-height 0.5s ease;
-  background: var(--white);
-}
-.detail-panel.open { max-height:3000px; }
-.detail-inner {
-  max-width: var(--max-w); margin:0 auto; padding:48px 20px;
-}
-
-/* HORIZONTAL SCROLL GALLERY */
-.h-scroll {
-  display:flex; gap:16px; overflow-x:auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom:12px;
-}
-.h-scroll::-webkit-scrollbar { height:6px; }
-.h-scroll::-webkit-scrollbar-track { background:var(--border); border-radius:3px; }
-.h-scroll::-webkit-scrollbar-thumb { background:var(--charcoal-light); border-radius:3px; }
-.h-scroll-item {
-  flex:0 0 320px; scroll-snap-align:start;
-  border-radius:var(--r-md); overflow:hidden;
-  position:relative;
-}
-.h-scroll-item img {
-  width:100%; height:240px; object-fit:cover;
-}
-.h-scroll-label {
-  position:absolute; bottom:0; left:0; right:0;
-  padding:12px 16px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.6));
-  color:var(--white); font-size:13px; font-weight:500;
-}
-@media(max-width:640px) {
-  .h-scroll-item { flex:0 0 280px; }
-  .h-scroll-item img { height:200px; }
-}
-
-/* Room detail inside panel */
-.room-type-section { margin-bottom:40px; }
-.room-type-section:last-child { margin-bottom:0; }
-.room-type-header {
-  display:flex; align-items:baseline; gap:16px; margin-bottom:16px; flex-wrap:wrap;
-}
-.room-type-name {
-  font-family:var(--font-d); font-size:26px; font-weight:700; color:var(--charcoal);
-}
-.room-type-price {
-  font-size:14px; font-weight:600; color:var(--red);
-}
-.room-type-desc {
-  font-size:14px; color:var(--charcoal-light); margin-bottom:16px; max-width:600px; line-height:1.6;
-}
-.room-features-row {
-  display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;
-}
-.feat-pill {
-  display:inline-flex; align-items:center; gap:4px;
-  background:var(--grey-bg); border:1px solid var(--border);
-  padding:5px 12px; border-radius:20px;
-  font-size:12px; font-weight:500; color:var(--charcoal-mid);
-}
-.feat-pill svg { width:14px; height:14px; color:var(--teal); }
-.room-book-link {
-  display:inline-flex; align-items:center; gap:6px;
-  color:var(--red); font-size:13px; font-weight:600;
-  transition: gap 0.2s;
-}
-.room-book-link:hover { gap:10px; }
-.room-book-link svg { width:16px; height:16px; }
-
-/* ABOUT SECTION (between hero and cards) */
-.about-strip {
-  background:var(--white); padding:64px 20px;
-}
-.about-inner {
-  max-width:var(--max-w); margin:0 auto;
-  display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
-}
-.about-text h2 {
-  font-family:var(--font-d); font-size:36px; font-weight:700;
-  color:var(--charcoal); margin-bottom:16px; line-height:1.2;
-}
-.about-text p { font-size:15px; line-height:1.7; color:var(--charcoal-mid); margin-bottom:16px; }
-.about-stats {
-  display:flex; gap:32px; margin-top:24px;
-}
-.about-stat-val {
-  font-family:var(--font-d); font-size:28px; font-weight:700; color:var(--red);
-}
-.about-stat-label { font-size:12px; color:var(--charcoal-light); margin-top:2px; }
-.about-img-col {
-  position:relative;
-}
-.about-img-col img {
-  border-radius:var(--r-md); width:100%; height:400px; object-fit:cover;
-}
-@media(max-width:768px) {
-  .about-inner { grid-template-columns:1fr; }
-  .about-text h2 { font-size:28px; }
-}
-
-.eyebrow { display:flex; align-items:center; gap:10px; font-size:12px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--red); margin-bottom:12px; }
-.eyebrow::before { content:""; width:28px; height:2px; background:var(--red); }
-.about-stats > div { border-left:3px solid var(--red); padding-left:12px; }
-.offer-head { background:var(--white); padding:56px 20px 28px; text-align:center; }
-.offer-head .eyebrow { justify-content:center; }
-.offer-head h2 { font-family:var(--font-d); font-size:34px; color:var(--charcoal); }
-
-.about-img-col img { height:420px; }
-.reception-card {
-  position:absolute; left:16px; right:16px; bottom:16px;
-  display:flex; align-items:center; gap:14px;
-  background:var(--white); border-left:4px solid var(--red);
-  border-radius:var(--r-md); padding:14px 16px; box-shadow:var(--shadow-lg);
-}
-.reception-ic { width:40px; height:40px; border-radius:50%; background:var(--red); color:#fff;
-  display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.reception-ic svg { width:20px; height:20px; }
-.reception-title { font-weight:600; font-size:15px; color:var(--charcoal); }
-.reception-sub { font-size:13px; color:var(--charcoal-light); }
-@media(max-width:640px) { .about-img-col img { height:340px; } }
-
-/* PAGES */
-.page[hidden] { display:none; }
-a.section-card { display:flex; }
-.amen-section { background:var(--grey-bg); padding:56px 20px; }
-.amen-inner { max-width:var(--max-w); margin:0 auto; }
-.amen-inner h2 { font-family:var(--font-d); font-size:32px; line-height:1.15; color:var(--charcoal); margin-bottom:24px; }
-@media(max-width:640px) { .amen-inner h2 { font-size:27px; } }
-.amenity-grid { grid-template-columns:repeat(4,1fr) !important; }
-.amenity-item { background:var(--white) !important; flex-direction:column; gap:12px !important; box-shadow:var(--shadow-sm); border-top:3px solid var(--red); }
-.amenity-icon { width:44px !important; height:44px !important; }
-.amenity-icon svg { width:22px !important; height:22px !important; }
-@media(max-width:900px) { .amenity-grid { grid-template-columns:repeat(2,1fr) !important; gap:12px !important; } .amenity-item { padding:16px !important; } }
-.page-hero { position:relative; height:46vh; min-height:340px; padding-top:84px; display:flex; align-items:flex-end; overflow:hidden; }
-.page-hero-bg { position:absolute; inset:0; background-size:cover; background-position:center; }
-.page-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,10,20,0.35), rgba(10,10,20,0.85)); }
-.page-hero-inner { position:relative; z-index:2; width:100%; max-width:var(--max-w); margin:0 auto; padding:0 20px 32px; }
-.page-hero h1 { font-family:var(--font-d); font-size:40px; color:#fff; line-height:1.1; }
-.back-link { display:flex; width:max-content; background:rgba(255,255,255,0.14); padding:6px 12px; border-radius:20px; color:rgba(255,255,255,0.85); font-size:14px; font-weight:500; margin-bottom:16px; }
-.rooms-wrap { max-width:var(--max-w); margin:0 auto; padding:36px 20px 64px; }
-.page-intro { font-size:15px; color:var(--charcoal-mid); max-width:620px; margin-bottom:28px; }
-.room-grid { display:grid; grid-template-columns:1fr; gap:32px; max-width:760px; margin:0 auto; }
-#page-rooms .page-intro { max-width:760px; margin-left:auto; margin-right:auto; }
-.room-grid .car-track img { height:420px; }
-
-@media(max-width:640px) { .room-grid .car-track img { height:260px; } }
-.room-card { background:var(--white); border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-md); display:flex; flex-direction:column; }
-.room-card.wide { max-width:760px; }
-.carousel { position:relative; }
-.car-track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
-.car-track::-webkit-scrollbar { display:none; }
-.car-track img { flex:0 0 100%; width:100%; height:260px; object-fit:cover; scroll-snap-align:start; }
-.room-card.wide .car-track img { height:360px; }
-.car-count { position:absolute; right:12px; bottom:12px; background:rgba(0,0,0,0.6); color:#fff; font-size:12px; font-weight:600; padding:4px 10px; border-radius:20px; }
-.car-btn { position:absolute; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.92); color:var(--charcoal); font-size:22px; line-height:1; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-md); }
-.car-btn.prev { left:10px; } .car-btn.next { right:10px; }
-@media(hover:none) { .car-btn { display:none; } }
-.room-body { padding:20px; display:flex; flex-direction:column; gap:12px; flex:1; }
-.room-tag { align-self:flex-start; background:var(--red-light); color:var(--red); font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:20px; }
-.room-top { display:flex; justify-content:space-between; align-items:baseline; gap:4px 12px; flex-wrap:wrap; }
-.room-top h3 { white-space:nowrap; }
-.room-top h3 { font-family:var(--font-d); font-size:24px; color:var(--charcoal); }
-.room-price { font-weight:700; color:var(--red); white-space:nowrap; }
-.room-price small { font-weight:400; color:var(--charcoal-light); font-size:12px; }
-.room-body p { font-size:14px; color:var(--charcoal-mid); line-height:1.6; }
-.room-body .room-features-row { margin-bottom:4px; }
-.room-cta { margin-top:auto; width:100%; }
-.g-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-@media(max-width:768px) { .g-grid { grid-template-columns:repeat(2,1fr); gap:8px; } }
-.g-item { position:relative; border-radius:var(--r-md); overflow:hidden; cursor:zoom-in; margin:0; }
-.g-item img { width:100%; aspect-ratio:4/5; object-fit:cover; }
-.g-item figcaption { position:absolute; left:0; right:0; bottom:0; padding:8px 10px; font-size:12px; color:#fff; background:linear-gradient(transparent, rgba(0,0,0,0.6)); }
-
-.text-link { display:inline-block; margin-top:24px; color:var(--red); font-weight:600; font-size:14px; }
-.fac-block { display:grid; grid-template-columns:1.1fr 1fr; gap:36px; align-items:center; margin-bottom:56px; }
-.fac-block.reverse .carousel { order:2; }
-.fac-block .carousel { border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-md); }
-.fac-block .car-track img { height:360px; }
-.fac-text h2 { font-family:var(--font-d); font-size:30px; color:var(--charcoal); line-height:1.2; margin-bottom:12px; }
-.fac-text p { font-size:15px; line-height:1.7; color:var(--charcoal-mid); margin-bottom:16px; }
-.fac-text .text-link { margin-top:8px; }
-.fac-also { background:var(--white); border-radius:var(--r-lg); padding:24px; border-left:4px solid var(--red); }
-.fac-also h3 { font-family:var(--font-d); font-size:22px; color:var(--charcoal); margin-bottom:14px; }
-@media(max-width:860px) {
-  .fac-block { grid-template-columns:1fr; gap:20px; margin-bottom:44px; }
-  .fac-block.reverse .carousel { order:0; }
-  .fac-block .car-track img { height:260px; }
-  .fac-text h2 { font-size:26px; }
-}
-
-@media(max-width:900px) {
-  .amenity-grid { background:var(--white); border-radius:var(--r-lg); padding:4px 16px; box-shadow:var(--shadow-sm); gap:0 16px !important; }
-  .amenity-item { background:none !important; box-shadow:none !important; border-top:none !important; border-bottom:1px solid var(--border); border-radius:0 !important;
-    flex-direction:row !important; align-items:center !important; gap:12px !important; padding:12px 0 !important; }
-  .amenity-icon { width:34px !important; height:34px !important; }
-  .amenity-icon svg { width:17px !important; height:17px !important; }
-  .amenity-name { font-size:13px !important; font-weight:500 !important; }
-  .amenity-desc { display:none; }
-}
-
-.page-hero h1 em, .room-top h3 em, .fac-text h2 em { font-style:italic; font-weight:400; color:var(--red); }
-.page-hero h1 em { color:#FF5A6E; }
-.page-lede { color:rgba(255,255,255,0.85); font-size:17px; margin-top:10px; max-width:520px; }
-.page-hero { height:58vh; min-height:400px; }
-@media(min-width:900px) {
-  .page-hero h1 { font-size:56px; }
-  .room-grid { max-width:1160px; gap:88px; }
-  #page-rooms .page-intro { max-width:1160px; }
-  .room-card { flex-direction:row; align-items:center; gap:56px; background:none; box-shadow:none; border-radius:0; overflow:visible; }
-  .room-card:nth-child(even) { flex-direction:row-reverse; }
-  .room-card .carousel { flex:0 0 56%; min-width:0; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-lg); }
-  .room-grid .car-track img { height:440px; }
-  .room-card .room-body { padding:0; gap:16px; }
-  .room-top { flex-direction:column; align-items:flex-start; gap:6px; }
-  .room-top h3 { font-size:40px; line-height:1.1; }
-  .room-price { font-size:18px; }
-  .room-body p { font-size:16px; line-height:1.7; }
-  .room-cta { width:auto; align-self:flex-start; padding:14px 32px; margin-top:8px; }
-}
-
-/* focus */
-:focus-visible { outline:3px solid #E8344F; outline-offset:3px; border-radius:4px; }
-.btn-book:focus-visible, .action-btn:focus-visible { outline-color:var(--charcoal); }
-.nav :focus-visible, .footer :focus-visible, .hero :focus-visible, .page-hero :focus-visible, .section-card:focus-visible { outline-color:#fff; }
-.section-card:focus-visible { outline-offset:-6px; }
-.about-text h2 em, .getting h2 em, .reviews h2 em, .cta-banner h2 em { font-style:italic; font-weight:400; color:var(--red); }
-.cta-banner h2 em { color:#FF5A6E; }
-/* tiles shorter on phones */
-@media(max-width:640px) { .section-card { height:44vh !important; min-height:280px !important; } }
-/* CTA: photo + dark fade */
-.cta-banner-overlay { background:linear-gradient(to bottom, rgba(10,10,20,0.35), rgba(10,10,20,0.8)) !important; }
-/* getting here */
-.getting { background:var(--white); padding:64px 20px; text-align:center; }
-.getting-inner { max-width:720px; margin:0 auto; }
-.getting .eyebrow { justify-content:center; }
-.getting h2 { font-family:var(--font-d); font-size:34px; line-height:1.15; color:var(--charcoal); margin-bottom:10px; }
-.getting-sub { font-size:15px; color:var(--charcoal-light); margin-bottom:28px; }
-.getting-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-.action-btn { display:inline-flex; align-items:center; gap:10px; padding:13px 22px; border:1.5px solid var(--charcoal); border-radius:var(--r-sm); background:var(--white); transition:background .2s, color .2s; }
-.action-btn:hover { background:var(--charcoal); }
-.action-btn:hover b, .action-btn:hover svg { color:#fff; }
-.action-btn svg { width:18px; height:18px; color:var(--charcoal); }
-.action-btn b { font-size:14px; font-weight:600; color:var(--charcoal); }
-.action-btn.primary { background:var(--red); border-color:var(--red); }
-.action-btn.primary svg, .action-btn.primary b { color:#fff; }
-.action-btn.primary:hover { background:var(--red-dark); border-color:var(--red-dark); }
-@media(max-width:640px) { .getting-actions { flex-direction:column; } .action-btn { justify-content:center; } .getting h2 { font-size:28px; } }
-@media(max-width:640px) { .getting h2 { font-size:28px; } }
-
-.review-mark { font-family:var(--font-d); font-size:44px; line-height:.8; color:var(--red); margin-bottom:6px; }
-.reviews-header p a { color:var(--charcoal); text-decoration:underline; text-decoration-color:var(--red); text-underline-offset:3px; }
-.review-cards { padding-bottom:12px; }
-.review-card { display:flex; flex-direction:column; }
-.review-text { flex:1; }
-
-.review-stars { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
-.stars { position:relative; display:inline-block; color:#D9D9E0; font-size:16px; letter-spacing:2px; line-height:1; }
-.stars-fill { position:absolute; left:0; top:0; overflow:hidden; white-space:nowrap; color:#F59E0B; }
-.review-score { font-size:12px; font-weight:600; color:var(--charcoal-light); }
-@media(min-width:1000px) { .review-cards { justify-content:center; } }
-
-.reviews-header h2 { line-height:1.15; }
-@media(max-width:640px) { .reviews-header h2 { font-size:28px; } }
-
-.nav-back { display:none; align-items:center; margin-left:auto; margin-right:12px; padding:8px 14px; border:1.5px solid rgba(255,255,255,0.55); border-radius:20px; color:#fff; font-size:13px; font-weight:600; transition:background .2s, border-color .2s; }
-.nav-back:hover { background:rgba(255,255,255,0.12); border-color:#fff; }
-body.on-sub .nav-back { display:inline-flex; }
-body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--red); }
-@media(min-width:901px) { body.on-sub .nav-back { display:none; } }
-.nav-links a.active { color:#fff; box-shadow:inset 0 -2px 0 #E8344F; padding-bottom:4px; }
-.page-end { max-width:760px; margin:0 auto; padding:8px 20px 64px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-.pe-link { display:inline-flex; flex-direction:column; justify-content:center; white-space:nowrap; padding:14px 22px; border:1.5px solid var(--charcoal); border-radius:var(--r-sm); font-size:15px; font-weight:600; color:var(--charcoal); transition:background .2s, color .2s; }
-.pe-link:hover { background:var(--charcoal); color:#fff; }
-.pe-link.next { text-align:right; background:var(--red); border-color:var(--red); color:#fff; }
-.pe-link.next:hover { background:var(--red-dark); }
-.pe-link small { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; opacity:.85; }
-@media(max-width:640px) { .pe-link { flex:1; padding:12px 14px; font-size:14px; } }
-
-/* AMENITIES GRID in panel */
-.amenity-grid {
-  display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
-  gap:16px;
-}
-.amenity-item {
-  background:var(--grey-bg); border-radius:var(--r-md); padding:20px;
-  display:flex; align-items:flex-start; gap:12px;
-}
-.amenity-icon {
-  width:36px; height:36px; border-radius:50%; background:var(--red-light);
-  display:flex; align-items:center; justify-content:center; flex-shrink:0;
-}
-.amenity-icon svg { width:18px; height:18px; color:var(--red); }
-.amenity-name { font-size:14px; font-weight:600; color:var(--charcoal); }
-.amenity-desc { font-size:12px; color:var(--charcoal-light); margin-top:2px; }
-
-/* BOARDROOM in panel */
-.boardroom-layout {
-  display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;
-}
-.boardroom-layout img { border-radius:var(--r-md); width:100%; height:300px; object-fit:cover; }
-.boardroom-info h3 {
-  font-family:var(--font-d); font-size:28px; font-weight:700; color:var(--charcoal); margin-bottom:12px;
-}
-.boardroom-info p { font-size:14px; color:var(--charcoal-mid); line-height:1.7; margin-bottom:16px; }
-@media(max-width:768px) {
-  .boardroom-layout { grid-template-columns:1fr; }
-}
-
-/* REVIEWS */
-.reviews-section {
-  background:var(--white); padding:64px 20px;
-}
-.reviews-inner {
-  max-width:var(--max-w); margin:0 auto;
-}
-.reviews-header {
-  text-align:center; margin-bottom:40px;
-}
-.reviews-header h2 {
-  font-family:var(--font-d); font-size:36px; font-weight:700; color:var(--charcoal); margin-bottom:8px;
-}
-.reviews-header p { font-size:14px; color:var(--charcoal-light); }
-.review-cards {
-  display:flex; gap:16px; overflow-x:auto;
-  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:12px;
-}
-.review-card {
-  flex:0 0 340px; scroll-snap-align:start;
-  background:var(--grey-bg); border-radius:var(--r-md); padding:24px;
-}
-.review-stars { color:#F59E0B; font-size:14px; margin-bottom:12px; }
-.review-text { font-size:14px; color:var(--charcoal-mid); line-height:1.6; font-style:italic; margin-bottom:16px; }
-.review-author { font-size:13px; font-weight:600; color:var(--charcoal); }
-.review-date { font-size:12px; color:var(--charcoal-light); }
-@media(max-width:640px) { .review-card { flex:0 0 300px; } }
-
-/* CTA BANNER */
-.cta-banner {
-  position:relative; height:50vh; min-height:300px;
-  display:flex; align-items:center; justify-content:center;
-  overflow:hidden;
-}
-.cta-banner-bg {
-  position:absolute; inset:0; background-size:cover; background-position:center;
-}
-.cta-banner-overlay {
-  position:absolute; inset:0; background:rgba(200,16,46,0.8);
-}
-.cta-banner-content {
-  position:relative; z-index:2; text-align:center; padding:0 24px;
-}
-.cta-banner h2 {
-  font-family:var(--font-d); font-size:40px; font-weight:700;
-  color:var(--white); margin-bottom:12px; line-height:1.2;
-}
-.cta-banner p { color:rgba(255,255,255,0.85); font-size:16px; margin-bottom:28px; }
-.btn-white {
-  display:inline-flex; padding:12px 32px; background:var(--white);
-  color:var(--red); border-radius:var(--r-sm);
-  font-size:14px; font-weight:600; transition:0.2s;
-}
-.btn-white:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
-@media(max-width:640px) { .cta-banner h2 { font-size:28px; } }
-
-/* LOCATION */
-.location-section {
-  background:var(--white); padding:64px 20px;
-}
-.location-inner {
-  max-width:var(--max-w); margin:0 auto; text-align:center;
-}
-.location-inner h2 {
-  font-family:var(--font-d); font-size:36px; font-weight:700; color:var(--charcoal); margin-bottom:8px;
-}
-.location-inner > p { font-size:14px; color:var(--charcoal-light); margin-bottom:32px; }
-.location-card {
-  display:inline-flex; align-items:center; gap:16px;
-  background:var(--grey-bg); padding:20px 32px; border-radius:var(--r-md);
-  transition:0.2s;
-}
-.location-card:hover { box-shadow:var(--shadow-md); }
-.location-card svg { width:24px; height:24px; color:var(--red); flex-shrink:0; }
-.location-card-text { text-align:left; }
-.location-card-name { font-weight:600; font-size:15px; color:var(--charcoal); }
-.location-card-addr { font-size:13px; color:var(--charcoal-light); }
-
-/* FOOTER */
-.footer { background:var(--charcoal); color:rgba(255,255,255,0.7); border-top:4px solid var(--red); }
-.footer-top { max-width:var(--max-w); margin:0 auto; padding:48px 20px 32px;
-  display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; }
-.footer-brand { display:flex; flex-direction:column; gap:16px; }
-.footer-logo { display:flex; align-items:center; gap:12px; }
-.footer-logo img { width:52px; height:52px; border-radius:50%; box-shadow:0 0 0 2px rgba(255,255,255,0.9); }
-.footer-logo .wordmark-main { font-size:22px; }
-.footer-tag { display:flex; gap:10px; align-items:center; font-size:12px; font-weight:600; color:var(--white); }
-.footer-tag i { width:2px; height:12px; background:var(--red); }
-.footer-brand p { font-size:14px; line-height:1.6; max-width:340px; }
-.footer-heading { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#E8344F; margin-bottom:14px; }
-.footer-nav { display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; list-style:none; }
-.footer-nav a { font-size:14px; color:rgba(255,255,255,0.75); }
-.footer-nav a:hover { color:var(--white); }
-.contact-row { display:flex; align-items:center; gap:12px; padding:10px 0; font-size:14px; color:rgba(255,255,255,0.85); border-bottom:1px solid rgba(255,255,255,0.07); }
-.contact-row:last-child { border-bottom:none; }
-.contact-ic { width:34px; height:34px; border-radius:50%; background:rgba(200,16,46,0.18); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.contact-ic svg { width:16px; height:16px; color:#E8344F; }
-.footer-book { display:none; }
-.footer-bottom { background:rgba(0,0,0,0.25); }
-.footer-bottom-inner { max-width:var(--max-w); margin:0 auto; padding:16px 20px;
-  display:flex; justify-content:space-between; align-items:center; gap:16px; font-size:12px; padding-right:96px; }
-.pay-line { display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:center; color:rgba(255,255,255,0.75); }
-.pay-line svg { width:14px; height:14px; color:#E8344F; }
-.pay-line b { color:var(--white); font-weight:600; }
-.pay-chips { display:flex; gap:6px; }
-.pay-chips em { font-style:normal; font-size:11px; padding:3px 8px; border:1px solid rgba(255,255,255,0.18); border-radius:20px; }
-@media(max-width:768px) {
-  .footer-top { grid-template-columns:1fr; gap:32px; padding-top:40px; }
-  .footer-book { display:flex; width:100%; }
-  .footer-bottom-inner { flex-direction:column-reverse; text-align:center; padding-bottom:88px; padding-right:20px; }
-}
-
-/* WHATSAPP FAB */
-.whatsapp-fab {
-  position:fixed; bottom:24px; right:24px; z-index:90;
-  width:56px; height:56px; background:#25D366; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:var(--shadow-md); transition:transform 0.2s;
-}
-.whatsapp-fab { opacity:0; transform:translateY(16px); pointer-events:none; transition:opacity .3s, transform .3s; }
-.whatsapp-fab.show { opacity:1; transform:none; pointer-events:auto; }
-.whatsapp-fab:hover { transform:scale(1.08); box-shadow:var(--shadow-lg); }
-.whatsapp-fab svg { width:28px; height:28px; fill:white; }
-
-/* GALLERY LIGHTBOX */
-.lightbox {
-  display:none; position:fixed; inset:0; z-index:200;
-  background:rgba(0,0,0,0.9); align-items:center; justify-content:center;
-}
-.lightbox.open { display:flex; }
-.lightbox img { max-width:90vw; max-height:85vh; object-fit:contain; border-radius:var(--r-sm); }
-.lightbox-close {
-  position:absolute; top:20px; right:20px;
-  width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.1);
-  display:flex; align-items:center; justify-content:center;
-  color:var(--white); font-size:20px; transition:0.2s; cursor:pointer; border:none;
-}
-.lightbox-close:hover { background:rgba(255,255,255,0.2); }
-
-/* Panel close button */
-.panel-close {
-  display:flex; align-items:center; gap:6px; margin-bottom:24px;
-  background:none; border:none; color:var(--charcoal-light);
-  font-size:13px; font-weight:500; cursor:pointer; transition:color 0.2s;
-}
-.panel-close:hover { color:var(--charcoal); }
-.panel-close svg { width:16px; height:16px; }
-</style>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/boot.js"></script>
+<script src="js/main.js" defer></script>
 </head>
 <body>
 
@@ -675,22 +41,22 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
     </ul>
     <a href="https://book.nightsbridge.com/25093" target="_blank" rel="noopener" class="btn-book nav-book-desktop">Book Now</a>
     <a href="#home" class="nav-back" aria-label="Back to home">&#8592; Home</a>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#rooms" onclick="toggleMenu()">Rooms</a>
-  <a href="#facilities" onclick="toggleMenu()">Facilities</a>
-  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
-  <a href="#location" onclick="toggleMenu()">Contact</a>
-  <a href="https://book.nightsbridge.com/25093" target="_blank" rel="noopener" class="btn-book" style="text-align:center;margin-top:8px;">Book Now</a>
+  <a href="#about">About</a>
+  <a href="#rooms">Rooms</a>
+  <a href="#facilities">Facilities</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#location">Contact</a>
+  <a href="https://book.nightsbridge.com/25093" target="_blank" rel="noopener" class="btn-book mobile-menu-book">Book Now</a>
 </div>
 
-<main class="page" id="page-home">
+<main class="page" id="home">
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-bg" role="img" aria-label="Fountain in front of the thatched lapa at President Guest Lodge"></div>
@@ -730,7 +96,7 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
       </div>
     </div>
     <div class="about-img-col">
-      <img data-src="img/receptionarea.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Reception desk at President Guest Lodge">
+      <img decoding="async" loading="lazy" src="img/receptionarea.webp" srcset="img/receptionarea-m.webp 800w, img/receptionarea.webp 1280w" sizes="(min-width: 769px) 50vw, 100vw" alt="Reception desk at President Guest Lodge">
       <div class="reception-card">
         <div class="reception-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <div>
@@ -741,8 +107,6 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
     </div>
   </div>
 </section>
-
-<!-- ============ FULL-BLEED SECTION CARDS ============ -->
 
 <!-- AMENITIES (home) -->
 <section class="amen-section" id="amenities">
@@ -757,17 +121,17 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
 <!-- WHAT WE OFFER: tap to open a page -->
 <div class="offer-head" id="explore"><div class="eyebrow">Explore</div><h2>What we have to offer</h2></div>
 <a class="section-card" href="#rooms">
-  <div class="section-card-bg" data-bg="img/comfortroom.webp"></div>
+  <img class="section-card-bg" src="img/comfortroom.webp" srcset="img/comfortroom-m.webp 600w, img/comfortroom.webp 1200w" sizes="100vw" alt="" loading="lazy" decoding="async">
   <div class="section-card-overlay"></div>
   <div class="section-card-content"><div class="section-card-title">Accommodation</div><div class="section-card-sub">Standard, Comfort &amp; Family &middot; from R850</div><div class="section-card-cta">View Rooms &#8250;</div></div>
 </a>
 <a class="section-card" href="#facilities">
-  <div class="section-card-bg" data-bg="img/pres6.webp"></div>
+  <img class="section-card-bg" src="img/pres6.webp" srcset="img/pres6-m.webp 600w, img/pres6.webp 765w" sizes="100vw" alt="" loading="lazy" decoding="async">
   <div class="section-card-overlay"></div>
   <div class="section-card-content"><div class="section-card-title">Facilities</div><div class="section-card-sub">Dining room, lapa &amp; pool</div><div class="section-card-cta">View Facilities &#8250;</div></div>
 </a>
 <a class="section-card" href="#gallery">
-  <div class="section-card-bg" data-bg="img/lappa-swimming-pool.webp" style="background-position:62% 80%"></div>
+  <img class="section-card-bg pos-pool" src="img/lappa-swimming-pool.webp" srcset="img/lappa-swimming-pool-m.webp 800w, img/lappa-swimming-pool.webp 1280w" sizes="100vw" alt="" loading="lazy" decoding="async">
   <div class="section-card-overlay"></div>
   <div class="section-card-content"><div class="section-card-title">Gallery</div><div class="section-card-sub">The pool, lapa &amp; gardens</div><div class="section-card-cta">View Photos &#8250;</div></div>
 </a>
@@ -776,17 +140,17 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
 <section class="reviews-section" id="reviews">
   <div class="reviews-inner">
     <div class="reviews-header">
-      <div class="eyebrow" style="justify-content:center">Reviews</div>
+      <div class="eyebrow eyebrow-center">Reviews</div>
       <h2>What Our Guests Say</h2>
       <p>Rated <a href="https://www.google.com/travel/search?q=President%20Guest%20Lodge%20Louis%20Trichardt" target="_blank" rel="noopener"><b>4.3 on Google</b></a> (36 reviews) and <a href="https://www.booking.com/hotel/za/president-guest-lodge-louis-trichardt12.html" target="_blank" rel="noopener"><b>7.5 on Booking.com</b></a> (301 reviews)</p>
     </div>
-    <div class="review-cards"><div class="review-card"><div class="review-stars" aria-label="Rated 10 out of 10"><span class="stars"><span class="stars-fill" style="width:100%">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="review-score">10/10</span></div><div class="review-text">&ldquo;The hospitality and understanding from the staff. Gift was very helpful.&rdquo;</div><div class="review-author">Verified guest</div><div class="review-date">Nov 2025 &middot; hotel.com.au</div></div><div class="review-card"><div class="review-stars" aria-label="Rated 9 out of 10"><span class="stars"><span class="stars-fill" style="width:90%">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="review-score">9/10</span></div><div class="review-text">&ldquo;The staff is very friendly, professional, and attends to the needs.&rdquo;</div><div class="review-author">Verified guest</div><div class="review-date">Sep 2025 &middot; hotel.com.au</div></div><div class="review-card"><div class="review-stars" aria-label="Rated 9 out of 10"><span class="stars"><span class="stars-fill" style="width:90%">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="review-score">9/10</span></div><div class="review-text">&ldquo;The location is very convenient especially for those who don't have cars.&rdquo;</div><div class="review-author">Verified guest</div><div class="review-date">Sep 2025 &middot; hotel.com.au</div></div></div>
+    <div class="review-cards" tabindex="0" role="region" aria-label="Guest reviews"><div class="review-card"><div class="review-stars" aria-label="Rated 10 out of 10"><span class="stars"><span class="stars-fill stars-100">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="review-score">10/10</span></div><div class="review-text">&ldquo;The hospitality and understanding from the staff. Gift was very helpful.&rdquo;</div><div class="review-author">Verified guest</div><div class="review-date">Nov 2025 &middot; hotel.com.au</div></div><div class="review-card"><div class="review-stars" aria-label="Rated 9 out of 10"><span class="stars"><span class="stars-fill stars-90">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="review-score">9/10</span></div><div class="review-text">&ldquo;The staff is very friendly, professional, and attends to the needs.&rdquo;</div><div class="review-author">Verified guest</div><div class="review-date">Sep 2025 &middot; hotel.com.au</div></div><div class="review-card"><div class="review-stars" aria-label="Rated 9 out of 10"><span class="stars"><span class="stars-fill stars-90">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="review-score">9/10</span></div><div class="review-text">&ldquo;The location is very convenient especially for those who don't have cars.&rdquo;</div><div class="review-author">Verified guest</div><div class="review-date">Sep 2025 &middot; hotel.com.au</div></div></div>
   </div>
 </section>
 
 <!-- CTA BANNER -->
 <section class="cta-banner">
-  <div class="cta-banner-bg" data-bg="img/pres7.webp"></div>
+  <img class="cta-banner-bg" src="img/pres7.webp" srcset="img/pres7-m.webp 369w, img/pres7.webp 471w" sizes="100vw" alt="" loading="lazy" decoding="async">
   <div class="cta-banner-overlay"></div>
   <div class="cta-banner-content">
     <h2>Your room is <em>waiting</em></h2>
@@ -812,9 +176,9 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
 </main>
 
 <!-- ROOMS PAGE -->
-<main class="page" id="page-rooms" hidden>
+<main class="page" id="rooms">
   <header class="page-hero">
-    <div class="page-hero-bg" data-bg="img/comfortroom2.webp"></div>
+    <img class="page-hero-bg" src="img/comfortroom2.webp" srcset="img/comfortroom2-m.webp 800w, img/comfortroom2.webp 1600w" sizes="100vw" alt="" loading="lazy" decoding="async">
     <div class="page-hero-inner">
       <a href="#home" class="back-link">&#8592; Home</a>
       <div class="hero-eyebrow">Accommodation</div>
@@ -827,10 +191,10 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
     <div class="room-grid">
       <article class="room-card">
         <div class="carousel">
-          <div class="car-track"><img data-src="img/standardroom1.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Standard Room photo 1" loading="lazy"><img data-src="img/standardroom2.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Standard Room photo 2" loading="lazy"><img data-src="img/standardroom3.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Standard Room photo 3" loading="lazy"></div>
+          <div class="car-track" tabindex="0" role="region" aria-label="Standard Room photos"><img decoding="async" src="img/standardroom1.webp" srcset="img/standardroom1-m.webp 800w, img/standardroom1.webp 1600w" sizes="(min-width: 900px) 640px, 100vw" alt="Standard Room photo 1" loading="lazy"><img decoding="async" src="img/standardroom2.webp" srcset="img/standardroom2-m.webp 800w, img/standardroom2.webp 1280w" sizes="(min-width: 900px) 640px, 100vw" alt="Standard Room photo 2" loading="lazy"><img decoding="async" src="img/standardroom3.webp" srcset="img/standardroom3-m.webp 800w, img/standardroom3.webp 1600w" sizes="(min-width: 900px) 640px, 100vw" alt="Standard Room photo 3" loading="lazy"></div>
           <span class="car-count">1 / 3</span>
-          <button class="car-btn prev" aria-label="Previous photo">&#8249;</button>
-          <button class="car-btn next" aria-label="Next photo">&#8250;</button>
+          <button type="button" class="car-btn prev" aria-label="Previous photo">&#8249;</button>
+          <button type="button" class="car-btn next" aria-label="Next photo">&#8250;</button>
         </div>
         <div class="room-body">
           <div class="room-top"><h3>Standard <em>Room</em></h3><div class="room-price">From R850<small> / night</small></div></div>
@@ -841,10 +205,10 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
       </article>
       <article class="room-card">
         <div class="carousel">
-          <div class="car-track"><img data-src="img/comfortroom.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Comfort Room photo 1" loading="lazy"><img data-src="img/comfortroom2.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Comfort Room photo 2" loading="lazy"><img data-src="img/comfortroom3.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Comfort Room photo 3" loading="lazy"><img data-src="img/comfortroom4.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Comfort Room photo 4" loading="lazy"></div>
+          <div class="car-track" tabindex="0" role="region" aria-label="Comfort Room photos"><img decoding="async" src="img/comfortroom.webp" srcset="img/comfortroom-m.webp 600w, img/comfortroom.webp 1200w" sizes="(min-width: 900px) 640px, 100vw" alt="Comfort Room photo 1" loading="lazy"><img decoding="async" src="img/comfortroom2.webp" srcset="img/comfortroom2-m.webp 800w, img/comfortroom2.webp 1600w" sizes="(min-width: 900px) 640px, 100vw" alt="Comfort Room photo 2" loading="lazy"><img decoding="async" src="img/comfortroom3.webp" srcset="img/comfortroom3-m.webp 800w, img/comfortroom3.webp 1280w" sizes="(min-width: 900px) 640px, 100vw" alt="Comfort Room photo 3" loading="lazy"><img decoding="async" src="img/comfortroom4.webp" srcset="img/comfortroom4-m.webp 600w, img/comfortroom4.webp 960w" sizes="(min-width: 900px) 640px, 100vw" alt="Comfort Room photo 4" loading="lazy"></div>
           <span class="car-count">1 / 4</span>
-          <button class="car-btn prev" aria-label="Previous photo">&#8249;</button>
-          <button class="car-btn next" aria-label="Next photo">&#8250;</button>
+          <button type="button" class="car-btn prev" aria-label="Previous photo">&#8249;</button>
+          <button type="button" class="car-btn next" aria-label="Next photo">&#8250;</button>
         </div>
         <div class="room-body">
           <div class="room-top"><h3>Comfort <em>Room</em></h3><div class="room-price">From R950<small> / night</small></div></div>
@@ -855,10 +219,10 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
       </article>
       <article class="room-card">
         <div class="carousel">
-          <div class="car-track"><img data-src="img/familyroom1.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Family Room photo 1" loading="lazy"><img data-src="img/familyroom2.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Family Room photo 2" loading="lazy"><img data-src="img/familyroom3.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Family Room photo 3" loading="lazy"><img data-src="img/familyroom4.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Family Room photo 4" loading="lazy"></div>
+          <div class="car-track" tabindex="0" role="region" aria-label="Family Room photos"><img decoding="async" src="img/familyroom1.webp" srcset="img/familyroom1-m.webp 800w, img/familyroom1.webp 1600w" sizes="(min-width: 900px) 640px, 100vw" alt="Family Room photo 1" loading="lazy"><img decoding="async" src="img/familyroom2.webp" srcset="img/familyroom2-m.webp 600w, img/familyroom2.webp 1200w" sizes="(min-width: 900px) 640px, 100vw" alt="Family Room photo 2" loading="lazy"><img decoding="async" src="img/familyroom3.webp" srcset="img/familyroom3-m.webp 800w, img/familyroom3.webp 1600w" sizes="(min-width: 900px) 640px, 100vw" alt="Family Room photo 3" loading="lazy"><img decoding="async" src="img/familyroom4.webp" srcset="img/familyroom4-m.webp 800w, img/familyroom4.webp 1280w" sizes="(min-width: 900px) 640px, 100vw" alt="Family Room photo 4" loading="lazy"></div>
           <span class="car-count">1 / 4</span>
-          <button class="car-btn prev" aria-label="Previous photo">&#8249;</button>
-          <button class="car-btn next" aria-label="Next photo">&#8250;</button>
+          <button type="button" class="car-btn prev" aria-label="Previous photo">&#8249;</button>
+          <button type="button" class="car-btn next" aria-label="Next photo">&#8250;</button>
         </div>
         <div class="room-body">
           <div class="room-top"><h3>Family <em>Room</em></h3><div class="room-price">From R2,000<small> / night</small></div></div>
@@ -876,9 +240,9 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
 </main>
 
 <!-- FACILITIES PAGE -->
-<main class="page" id="page-facilities" hidden>
+<main class="page" id="facilities">
   <header class="page-hero">
-    <div class="page-hero-bg" data-bg="img/boardroom2pres.webp"></div>
+    <img class="page-hero-bg" src="img/boardroom2pres.webp" srcset="img/boardroom2pres-m.webp 800w, img/boardroom2pres.webp 1600w" sizes="100vw" alt="" loading="lazy" decoding="async">
     <div class="page-hero-inner">
       <a href="#home" class="back-link">&#8592; Home</a>
       <div class="hero-eyebrow">Facilities</div>
@@ -888,7 +252,7 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
   </header>
   <section class="rooms-wrap">
     <div class="fac-block" id="dining">
-      <div class="carousel"><div class="car-track"><img data-src="img/boardroompres.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Boardroom dining photo 1" loading="lazy"><img data-src="img/boardroom2pres.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Boardroom dining photo 2" loading="lazy"></div><span class="car-count">1 / 2</span><button class="car-btn prev" aria-label="Previous photo">&#8249;</button><button class="car-btn next" aria-label="Next photo">&#8250;</button></div>
+      <div class="carousel"><div class="car-track" tabindex="0" role="region" aria-label="Boardroom dining photos"><img decoding="async" src="img/boardroompres.webp" srcset="img/boardroompres-m.webp 800w, img/boardroompres.webp 1280w" sizes="(min-width: 900px) 640px, 100vw" alt="Boardroom dining photo 1" loading="lazy"><img decoding="async" src="img/boardroom2pres.webp" srcset="img/boardroom2pres-m.webp 800w, img/boardroom2pres.webp 1600w" sizes="(min-width: 900px) 640px, 100vw" alt="Boardroom dining photo 2" loading="lazy"></div><span class="car-count">1 / 2</span><button type="button" class="car-btn prev" aria-label="Previous photo">&#8249;</button><button type="button" class="car-btn next" aria-label="Next photo">&#8250;</button></div>
       <div class="fac-text">
         <div class="eyebrow">Dining</div>
         <h2>Breakfast &amp; dinner, <em>your time</em></h2>
@@ -898,7 +262,7 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
       </div>
     </div>
     <div class="fac-block reverse" id="pool">
-      <div class="carousel"><div class="car-track"><img data-src="img/lappa-swimming-pool.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Lapa and pool photo 1" style="object-position:62% 80%" loading="lazy"><img data-src="img/pres2.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Lapa and pool photo 2" loading="lazy"><img data-src="img/pres6.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Lapa and pool photo 3" loading="lazy"><img data-src="img/outside.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Lapa and pool photo 4" style="object-position:62% 80%" loading="lazy"></div><span class="car-count">1 / 4</span><button class="car-btn prev" aria-label="Previous photo">&#8249;</button><button class="car-btn next" aria-label="Next photo">&#8250;</button></div>
+      <div class="carousel"><div class="car-track" tabindex="0" role="region" aria-label="Lapa and pool photos"><img decoding="async" src="img/lappa-swimming-pool.webp" srcset="img/lappa-swimming-pool-m.webp 800w, img/lappa-swimming-pool.webp 1280w" sizes="(min-width: 900px) 640px, 100vw" alt="Lapa and pool photo 1" loading="lazy" class="pos-pool"><img decoding="async" src="img/pres2.webp" srcset="img/pres2-m.webp 600w, img/pres2.webp 765w" sizes="(min-width: 900px) 640px, 100vw" alt="Lapa and pool photo 2" loading="lazy"><img decoding="async" src="img/pres6.webp" srcset="img/pres6-m.webp 600w, img/pres6.webp 765w" sizes="(min-width: 900px) 640px, 100vw" alt="Lapa and pool photo 3" loading="lazy"><img decoding="async" src="img/outside.webp" srcset="img/outside-m.webp 800w, img/outside.webp 1280w" sizes="(min-width: 900px) 640px, 100vw" alt="Lapa and pool photo 4" loading="lazy" class="pos-pool"></div><span class="car-count">1 / 4</span><button type="button" class="car-btn prev" aria-label="Previous photo">&#8249;</button><button type="button" class="car-btn next" aria-label="Next photo">&#8250;</button></div>
       <div class="fac-text">
         <div class="eyebrow">Outdoors</div>
         <h2>Lapa &amp; <em>pool</em></h2>
@@ -907,7 +271,7 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
       </div>
     </div>
     <div class="fac-block" id="reception">
-      <div class="carousel"><div class="car-track"><img data-src="img/receptionarea.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Reception desk"></div></div>
+      <div class="carousel"><div class="car-track"><img decoding="async" loading="lazy" src="img/receptionarea.webp" srcset="img/receptionarea-m.webp 800w, img/receptionarea.webp 1280w" sizes="(min-width: 900px) 640px, 100vw" alt="Reception desk"></div></div>
       <div class="fac-text">
         <div class="eyebrow">Service</div>
         <h2>Always <em>someone</em> at the desk</h2>
@@ -927,9 +291,9 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
 </main>
 
 <!-- GALLERY PAGE -->
-<main class="page" id="page-gallery" hidden>
+<main class="page" id="gallery">
   <header class="page-hero">
-    <div class="page-hero-bg" data-bg="img/pres2.webp"></div>
+    <img class="page-hero-bg" src="img/pres2.webp" srcset="img/pres2-m.webp 600w, img/pres2.webp 765w" sizes="100vw" alt="" loading="lazy" decoding="async">
     <div class="page-hero-inner">
       <a href="#home" class="back-link">&#8592; Home</a>
       <div class="hero-eyebrow">Gallery</div>
@@ -937,7 +301,7 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
       <p class="page-lede">A look around before you arrive.</p>
     </div>
   </header>
-  <section class="rooms-wrap"><div class="g-grid"><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Garden fountain"><img data-src="img/pres1.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Garden fountain" loading="lazy"><figcaption>Garden fountain</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Lapa &amp; pool"><img data-src="img/lappa-swimming-pool.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Lapa &amp; pool" loading="lazy"><figcaption>Lapa &amp; pool</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Pool waterfall"><img data-src="img/pres2.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Pool waterfall" loading="lazy"><figcaption>Pool waterfall</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Reception"><img data-src="img/receptionarea.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Reception" loading="lazy"><figcaption>Reception</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Dining room"><img data-src="img/boardroom2pres.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Dining room" loading="lazy"><figcaption>Dining room</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Dining room"><img data-src="img/boardroompres.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Dining room" loading="lazy"><figcaption>Dining room</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Standard Room"><img data-src="img/standardroom1.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Standard Room" loading="lazy"><figcaption>Standard Room</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Standard Room"><img data-src="img/standardroom3.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Standard Room" loading="lazy"><figcaption>Standard Room</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Comfort Room"><img data-src="img/comfortroom.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Comfort Room" loading="lazy"><figcaption>Comfort Room</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Comfort Room"><img data-src="img/comfortroom3.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Comfort Room" loading="lazy"><figcaption>Comfort Room</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Family Room"><img data-src="img/familyroom1.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Family Room" loading="lazy"><figcaption>Family Room</figcaption></figure><figure class="g-item" onclick="openLightbox(this)" tabindex="0" role="button" aria-label="Enlarge photo: Family Room"><img data-src="img/familyroom3.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Family Room" loading="lazy"><figcaption>Family Room</figcaption></figure></div></section>
+  <section class="rooms-wrap"><div class="g-grid"><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Garden fountain"><img decoding="async" src="img/pres1.webp" srcset="img/pres1-m.webp 600w, img/pres1.webp 765w" sizes="(min-width: 768px) 33vw, 50vw" alt="Garden fountain" loading="lazy"><figcaption>Garden fountain</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Lapa &amp; pool"><img decoding="async" src="img/lappa-swimming-pool.webp" srcset="img/lappa-swimming-pool-m.webp 800w, img/lappa-swimming-pool.webp 1280w" sizes="(min-width: 768px) 33vw, 50vw" alt="Lapa &amp; pool" loading="lazy"><figcaption>Lapa &amp; pool</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Pool waterfall"><img decoding="async" src="img/pres2.webp" srcset="img/pres2-m.webp 600w, img/pres2.webp 765w" sizes="(min-width: 768px) 33vw, 50vw" alt="Pool waterfall" loading="lazy"><figcaption>Pool waterfall</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Reception"><img decoding="async" src="img/receptionarea.webp" srcset="img/receptionarea-m.webp 800w, img/receptionarea.webp 1280w" sizes="(min-width: 768px) 33vw, 50vw" alt="Reception" loading="lazy"><figcaption>Reception</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Dining room"><img decoding="async" src="img/boardroom2pres.webp" srcset="img/boardroom2pres-m.webp 800w, img/boardroom2pres.webp 1600w" sizes="(min-width: 768px) 33vw, 50vw" alt="Dining room" loading="lazy"><figcaption>Dining room</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Dining room"><img decoding="async" src="img/boardroompres.webp" srcset="img/boardroompres-m.webp 800w, img/boardroompres.webp 1280w" sizes="(min-width: 768px) 33vw, 50vw" alt="Dining room" loading="lazy"><figcaption>Dining room</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Standard Room"><img decoding="async" src="img/standardroom1.webp" srcset="img/standardroom1-m.webp 800w, img/standardroom1.webp 1600w" sizes="(min-width: 768px) 33vw, 50vw" alt="Standard Room" loading="lazy"><figcaption>Standard Room</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Standard Room"><img decoding="async" src="img/standardroom3.webp" srcset="img/standardroom3-m.webp 800w, img/standardroom3.webp 1600w" sizes="(min-width: 768px) 33vw, 50vw" alt="Standard Room" loading="lazy"><figcaption>Standard Room</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Comfort Room"><img decoding="async" src="img/comfortroom.webp" srcset="img/comfortroom-m.webp 600w, img/comfortroom.webp 1200w" sizes="(min-width: 768px) 33vw, 50vw" alt="Comfort Room" loading="lazy"><figcaption>Comfort Room</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Comfort Room"><img decoding="async" src="img/comfortroom3.webp" srcset="img/comfortroom3-m.webp 800w, img/comfortroom3.webp 1280w" sizes="(min-width: 768px) 33vw, 50vw" alt="Comfort Room" loading="lazy"><figcaption>Comfort Room</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Family Room"><img decoding="async" src="img/familyroom1.webp" srcset="img/familyroom1-m.webp 800w, img/familyroom1.webp 1600w" sizes="(min-width: 768px) 33vw, 50vw" alt="Family Room" loading="lazy"><figcaption>Family Room</figcaption></figure><figure class="g-item" tabindex="0" role="button" aria-label="Enlarge photo: Family Room"><img decoding="async" src="img/familyroom3.webp" srcset="img/familyroom3-m.webp 800w, img/familyroom3.webp 1600w" sizes="(min-width: 768px) 33vw, 50vw" alt="Family Room" loading="lazy"><figcaption>Family Room</figcaption></figure></div></section>
   <nav class="page-end" aria-label="Page navigation">
     <a href="#home" class="pe-link">&#8592; Back to home</a>
     <a href="#rooms" class="pe-link next"><small>Next</small>Rooms &#8594;</a>
@@ -993,100 +357,10 @@ body.on-sub .nav { background:var(--charcoal); box-shadow:inset 0 -3px 0 var(--r
 </a>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-  <img src="" alt="Full size" id="lightbox-img">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox-close" type="button" aria-label="Close photo">&times;</button>
+  <img alt="" id="lightbox-img">
 </div>
 
-<script>
-(function(){
-  var small=window.innerWidth<=700;
-  var pick=function(u){return small?u.replace(/\.webp$/,'-m.webp'):u;};
-  window.__loadEl=function(el){
-    if(el.dataset.src){el.src=pick(el.dataset.src);el.removeAttribute('data-src');}
-    if(el.dataset.bg){el.style.backgroundImage="url('"+pick(el.dataset.bg)+"')";el.removeAttribute('data-bg');}
-  };
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(!e.isIntersecting)return; var t=e.target; io.unobserve(t);
-    if(t.classList.contains('carousel')){t.querySelectorAll('[data-src]').forEach(__loadEl);} else __loadEl(t);
-  });},{rootMargin:'400px 0px'});
-  window.__watchImages=function(){
-    document.querySelectorAll('.carousel').forEach(function(c){io.observe(c);});
-    document.querySelectorAll('[data-bg],[data-src]').forEach(function(el){ if(!el.closest('.carousel')) io.observe(el); });
-  };
-})();
-</script>
-<script>
-// Nav scroll effect
-function onScroll(){
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY>50);
-  document.querySelector('.whatsapp-fab').classList.toggle('show', window.scrollY>window.innerHeight*0.6);
-}
-window.addEventListener('scroll',onScroll,{passive:true});
-
-// Mobile menu
-function toggleMenu(){
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-
-// Lightbox
-function openLightbox(el){
-  event.stopPropagation();
-  const img=el.querySelector('img');
-  document.getElementById('lightbox-img').src=img.currentSrc||img.src;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeLightbox();});
-document.querySelectorAll('.g-item').forEach(g=>g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); g.click(); } }));
-
-// Simple hash router: #rooms, #boardroom, #gallery are pages; anything else lives on home
-var loops=window.loops||[];
-const PAGES=['rooms','facilities','gallery'];
-function route(){
-  let h=location.hash.replace('#','');
-  if(h==='boardroom'||h==='dining') h='facilities';
-  const page=PAGES.includes(h)?h:'home';
-  document.querySelectorAll('.page').forEach(p=>p.hidden=(p.id!=='page-'+page));
-  document.body.classList.toggle('on-sub', page!=='home');
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+page));
-  document.getElementById('mobileMenu').classList.remove('open');
-  if(page!=='home' || !h || h==='home'){ window.scrollTo({top:0,behavior:'instant'}); }
-  else { const el=document.getElementById(h); if(el) setTimeout(()=>el.scrollIntoView({behavior:'instant'}),0); }
-  onScroll();
-  requestAnimationFrame(()=>loops.forEach(r=>r()));
-}
-window.addEventListener('hashchange',route);
-
-// Endless photo carousels: clones at both ends, silently jump back when a clone is reached
-loops=[];
-document.querySelectorAll('.carousel').forEach(c=>{
-  const t=c.querySelector('.car-track'), cnt=c.querySelector('.car-count');
-  const n=t.children.length;
-  if(n<2||!cnt) return;
-  t.insertBefore(t.lastElementChild.cloneNode(true), t.firstElementChild);
-  t.appendChild(t.children[1].cloneNode(true));
-  const w=()=>t.clientWidth;
-  const pos=()=>Math.round(t.scrollLeft/w());
-  const jump=i=>{ t.style.scrollSnapType='none'; t.scrollLeft=i*w(); t.offsetHeight; t.style.scrollSnapType=''; };
-  const reset=()=>{ if(w()) jump(1); cnt.textContent='1 / '+n; };
-  let timer;
-  t.addEventListener('scroll',()=>{
-    const p=pos(); cnt.textContent=(((p-1)%n+n)%n+1)+' / '+n;
-    clearTimeout(timer);
-    timer=setTimeout(()=>{ const q=pos(); if(q===0) jump(n); else if(q===n+1) jump(1); },120);
-  },{passive:true});
-  c.querySelector('.prev').onclick=()=>t.scrollBy({left:-w(),behavior:'smooth'});
-  c.querySelector('.next').onclick=()=>t.scrollBy({left:w(),behavior:'smooth'});
-  loops.push(reset);
-});
-window.addEventListener('resize',()=>loops.forEach(r=>r()));
-route();
-__watchImages();
-</script>
 </body>
 </html>

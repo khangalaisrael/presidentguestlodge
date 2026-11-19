@@ -1,0 +1,14 @@
+{
+  "name": "presidentguestlodge",
+  "private": true,
+  "description": "President Guest Lodge website (static) with automated tests",
+  "scripts": {
+    "serve": "node tests/serve.js",
+    "test": "playwright test",
+    "images": "python3 scripts/optimize_images.py"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.48.0"
+  }
+}

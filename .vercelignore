@@ -1,0 +1,12 @@
+# Only index.html, css/, js/ and img/ are served. Everything else stays out of the deployment.
+assets
+scripts
+tests
+test-results
+playwright-report
+node_modules
+package.json
+package-lock.json
+playwright.config.js
+README.md
+.github
