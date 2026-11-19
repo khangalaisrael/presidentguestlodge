@@ -43,9 +43,17 @@
   }
 
   /* ---------- 2. Nav + 3. WhatsApp button ---------- */
-  function onScroll() {
+  var scrollQueued = false;
+  function updateOnScroll() {
+    scrollQueued = false;
     nav.classList.toggle('scrolled', window.scrollY > 50);
     whatsapp.classList.toggle('show', window.scrollY > window.innerHeight * 0.6);
+  }
+  // At most one update per frame, so scrolling never waits on this
+  function onScroll() {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(updateOnScroll);
   }
 
   function closeMenu() {
